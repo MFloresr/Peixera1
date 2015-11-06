@@ -9,12 +9,14 @@ public class Pez {
     private String sexe;
     private GImage imagen;
     private int velocidad;
+    private int direccion;
     private Random rand=new Random();
 
-    public Pez(String sexe,GImage imagen){
+    public Pez(String sexe,GImage imagen,int direcion){
         this.sexe=sexe;
-        this.imagen=imagen;
+        this.imagen = imagen;
         velocidad = rand.nextInt(20)+2;
+        this.direccion = direcion;
     }
 
     public Pez(){
@@ -50,5 +52,21 @@ public class Pez {
             String sexe="Hembra";
         }
         return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public int getDireccion() {
+        return direccion;
+    }
+
+    public int setDireccion() {
+        int direccion = rand.nextInt(2);
+        if (direccion==0){
+            direccion= -1;
+        }
+        return direccion;
     }
 }
