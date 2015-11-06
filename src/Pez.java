@@ -1,4 +1,5 @@
 import acm.graphics.GImage;
+import acm.graphics.GRectangle;
 
 import java.util.Random;
 
@@ -9,14 +10,16 @@ public class Pez {
     private String sexe;
     private GImage imagen;
     private int velocidad;
-    private int direccion;
+    private int direccion_x;
+    private int direccion_y;
     private Random rand=new Random();
 
-    public Pez(String sexe,GImage imagen,int direcion){
+    public Pez(String sexe,GImage imagen,int direcion_x,int direcion_y){
         this.sexe=sexe;
         this.imagen = imagen;
         velocidad = rand.nextInt(20)+2;
-        this.direccion = direcion;
+        this.direccion_x = direcion_x;
+        this.direccion_y = direcion_y;
     }
 
     public Pez(){
@@ -58,15 +61,35 @@ public class Pez {
         this.sexe = sexe;
     }
 
-    public int getDireccion() {
-        return direccion;
+    public int getDireccion_x() {
+        return direccion_x;
     }
 
-    public int setDireccion() {
+    public int setDireccion_x() {
         int direccion = rand.nextInt(2);
         if (direccion==0){
             direccion= -1;
         }
         return direccion;
+    }
+
+    public void PosiconararPez(double x, double y){
+        imagen.setLocation(x,y);
+    }
+
+    public int getDireccio_y() {
+        return direccion_y;
+    }
+
+    public int setDireccion_y() {
+        int direccion = rand.nextInt(2);
+        if (direccion==0){
+            direccion= -1;
+        }
+        return direccion;
+    }
+
+    public GRectangle getPosicion(){
+        return imagen.getBounds();
     }
 }

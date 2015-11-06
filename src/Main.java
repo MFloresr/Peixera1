@@ -1,6 +1,4 @@
-import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
-
 import java.util.List;
 
 public class Main extends GraphicsProgram {
@@ -11,21 +9,17 @@ public class Main extends GraphicsProgram {
 
         Juego juego =new Juego();
 
-        List<Pez> peces = (List<Pez>) juego.getPeces();
-
-        for(Pez pez: peces){
+        List<Pez> pecesH = juego.getPecesH();
+        for(Pez pez:pecesH){
             add(pez.getImagen());
         }
 
-        /*GImage imatge = new GImage("imagenes/M.png", 100, 100);
-        imatge.setSize(60,60);
-        add(imatge);
-        GImage imatge2 = new GImage("imagenes/MH.png", 200, 100);
-        imatge2.setSize(60,80);
-        add(imatge2);*/
-
-
-
+        List<Pez> pecesM= juego.getPecesM();
+        for(Pez pez:pecesH){
+            add(pez.getImagen());
+        }
+        juego.posicion_inicial();
 
     }
+
 }

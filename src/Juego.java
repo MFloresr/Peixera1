@@ -1,31 +1,36 @@
-import acm.graphics.GImage;
+import java.util.List;
 
-import java.util.ArrayList;
-
-/**
- * Created by Vipi on 02/11/2015.
- */
 public class Juego {
-    private Peces peces;
+    private Peces pecesH;
+    private Peces pecesM;
 
     public Juego(){
-        peces = new Peces();
+        pecesH = new Peces();
+        pecesM = new Peces();
     }
 
-    public Peces getPeces() {
-        return peces;
+    public List<Pez> getPecesH() {
+        return pecesH.getPecesH();
     }
 
+    public void posicion_inicial(){
+        for(int i=0;i<getPecesH().size();i++){
+            Pez pes =getPecesH().get(i);
 
-    /*public final void MoverPeces(int x, int y){
-        for(Pez pez: peces){
-            pez.getImagen().move(x,y);
+            pes.PosiconararPez(getAleatori(1300 - pes.getImagen().getWidth(),0), getAleatori(0,600 - pes.getImagen().getHeight()));
         }
-    }*/
-    public final void girarpez(){
-
-
     }
 
+    public double getAleatori(double min, double max){
+        return Math.random() *(max-min+1)+min;
+    }
+
+    public List<Pez> getPecesM() {
+        return pecesM.getPecesM();
+    }
+
+    public void ControlarDireccion(){
+
+    }
 
 }
