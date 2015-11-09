@@ -10,16 +10,15 @@ public class Pez {
     private String sexe;
     private GImage imagen;
     private int velocidad;
-    private int direccion_x;
-    private int direccion_y;
+    private int direccion;
     private Random rand=new Random();
 
-    public Pez(String sexe,GImage imagen,int direcion_x,int direcion_y){
+    public Pez(String sexe,GImage imagen,int direcion){
         this.sexe=sexe;
         this.imagen = imagen;
         velocidad = rand.nextInt(20)+2;
-        this.direccion_x = direcion_x;
-        this.direccion_y = direcion_y;
+        this.direccion = direcion;
+
     }
 
     public Pez(){
@@ -61,14 +60,16 @@ public class Pez {
         this.sexe = sexe;
     }
 
-    public int getDireccion_x() {
-        return direccion_x;
+    public int getDireccion() {
+        return direccion;
     }
 
-    public int setDireccion_x() {
-        int direccion = rand.nextInt(2);
-        if (direccion==0){
+    public int setDireccion() {
+        int direccion = rand.nextInt(4);
+        if (direccion==3){
             direccion= -1;
+        }else if (direccion==4){
+            direccion = -2;
         }
         return direccion;
     }
@@ -77,17 +78,6 @@ public class Pez {
         imagen.setLocation(x,y);
     }
 
-    public int getDireccio_y() {
-        return direccion_y;
-    }
-
-    public int setDireccion_y() {
-        int direccion = rand.nextInt(2);
-        if (direccion==0){
-            direccion= -1;
-        }
-        return direccion;
-    }
 
     public GRectangle getPosicion(){
         return imagen.getBounds();

@@ -19,8 +19,7 @@ public class Peces {
             Pez pez=new Pez();
             imagen = new GImage(imagenf);
             pez.setSexe(sexe);
-            pez.setDireccion_x();
-            pez.setDireccion_y();
+            pez.setDireccion();
             pez.setVelocidad();
             pez.setImagen(imagen);
             imagen.setSize(80,60);

@@ -19,6 +19,11 @@ public class Juego {
 
             pes.PosiconararPez(getAleatori(1300 - pes.getImagen().getWidth(),0), getAleatori(0,600 - pes.getImagen().getHeight()));
         }
+        for(int i=0;i<getPecesM().size();i++){
+            Pez pes =getPecesM().get(i);
+
+            pes.PosiconararPez(getAleatori(1300 - pes.getImagen().getWidth(),0), getAleatori(0,600 - pes.getImagen().getHeight()));
+        }
     }
 
     public double getAleatori(double min, double max){
@@ -29,7 +34,9 @@ public class Juego {
         return pecesM.getPecesM();
     }
 
-    public void ControlarDireccion(){
+    public void MoverPeces(){
+        //pecesH.MoverPeces(-5,0);
+        pecesM.MoverPeces(5,0);
 
     }
 

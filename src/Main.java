@@ -15,10 +15,15 @@ public class Main extends GraphicsProgram {
         }
 
         List<Pez> pecesM= juego.getPecesM();
-        for(Pez pez:pecesH){
+        for(Pez pez:pecesM){
             add(pez.getImagen());
         }
         juego.posicion_inicial();
+
+        for(int i =0;i<50;i++){
+            juego.MoverPeces();
+            pause(200);
+        }
 
     }
 
