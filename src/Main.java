@@ -1,6 +1,8 @@
 import acm.program.GraphicsProgram;
 import java.util.List;
 
+import static acm.util.JTFTools.pause;
+
 public class Main extends GraphicsProgram {
 
     public void run() {
@@ -16,8 +18,9 @@ public class Main extends GraphicsProgram {
 
         juego.posicion_inicial();
 
-        for(int i =0;i<500;i++){
 
+        while(juego.getPeces().size()!=0){
+            juego.MoverPeces();
             pause(50);
         }
 

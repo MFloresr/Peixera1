@@ -23,21 +23,12 @@ public class Juego {
         return Math.random() *(max-min+1)+min;
     }
 
-  /*  public void MoverPeces(){
-        peces.MoverPeces(1,0);
-    }*/
+    public void LimitePesera(){
 
+    }
     public void MoverPeces(){
         for(Pez pez:getPeces()){
-            if(pez.getDireccion()==1){
-                pez.getImagen().move(pez.getVelocidad(),0);
-            }if(pez.getDireccion()==-1){
-                pez.getImagen().move(-1*pez.getVelocidad(),0);
-            }if(pez.getDireccion()==2){
-                pez.getImagen().move(0,pez.getVelocidad());
-            }if(pez.getDireccion()==-2){
-                pez.getImagen().move(0,-1*pez.getVelocidad());
-            }
+            pez.Mover();
         }
 
     }

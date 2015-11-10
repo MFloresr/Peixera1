@@ -63,8 +63,31 @@ public class Pez {
         imagen.setLocation(x,y);
     }
 
-
     public GRectangle getPosicion(){
         return imagen.getBounds();
+    }
+    public void Mover(){
+        if(direccion==1){
+            imagen.move(velocidad,0);
+            if(imagen.getLocation().getX()>1300){
+                direccion=-1;
+            }
+        }if(direccion==-1){
+            imagen.move(-1*velocidad,0);
+            if(imagen.getLocation().getX()<0- imagen.getWidth()){
+                direccion=1;
+            }
+        }if(direccion==2){
+            imagen.move(0,velocidad);
+            if(imagen.getLocation().getY()>600) {
+                direccion = -2;
+            }
+        }if(direccion==-2){
+            imagen.move(0, -1 * velocidad);
+            if(imagen.getLocation().getY()<0-imagen.getHeight()) {
+                direccion = 2;
+            }
+        }
+
     }
 }
