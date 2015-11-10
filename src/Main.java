@@ -9,20 +9,16 @@ public class Main extends GraphicsProgram {
 
         Juego juego =new Juego();
 
-        List<Pez> pecesH = juego.getPecesH();
-        for(Pez pez:pecesH){
+        List<Pez> peces = juego.getPeces();
+        for(Pez pez:peces){
             add(pez.getImagen());
         }
 
-        List<Pez> pecesM= juego.getPecesM();
-        for(Pez pez:pecesM){
-            add(pez.getImagen());
-        }
         juego.posicion_inicial();
 
-        for(int i =0;i<50;i++){
-            juego.MoverPeces();
-            pause(200);
+        for(int i =0;i<500;i++){
+
+            pause(50);
         }
 
     }

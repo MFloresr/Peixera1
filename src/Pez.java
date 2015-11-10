@@ -37,24 +37,15 @@ public class Pez {
         return velocidad;
     }
 
-    public int setVelocidad() {
-        int velocitat = rand.nextInt(20)+2;
-        return velocitat;
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
     }
 
     public String getSexe() {
         return sexe;
     }
 
-    public String setSexe() {
-        int alaeatori=rand.nextInt(2);
-        if(alaeatori==0){
-            String sexe="Macho";
-        }else if(alaeatori==1){
-            String sexe="Hembra";
-        }
-        return sexe;
-    }
+
 
     public void setSexe(String sexe) {
         this.sexe = sexe;
@@ -64,14 +55,8 @@ public class Pez {
         return direccion;
     }
 
-    public int setDireccion() {
-        int direccion = rand.nextInt(4);
-        if (direccion==3){
-            direccion= -1;
-        }else if (direccion==4){
-            direccion = -2;
-        }
-        return direccion;
+    public void setDireccion(int direccion) {
+        this.direccion = direccion;
     }
 
     public void PosiconararPez(double x, double y){
