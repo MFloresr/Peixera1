@@ -11,6 +11,7 @@ public class Pez {
     private GImage imagen;
     private int velocidad;
     private int direccion;
+    private boolean EsMort;
     private Random rand=new Random();
 
     public Pez(String sexe,GImage imagen,int direcion){
@@ -45,8 +46,6 @@ public class Pez {
         return sexe;
     }
 
-
-
     public void setSexe(String sexe) {
         this.sexe = sexe;
     }
@@ -59,6 +58,14 @@ public class Pez {
         this.direccion = direccion;
     }
 
+    public boolean getEsMort() {
+        return EsMort;
+    }
+
+    public void setEsMort(boolean esMort) {
+        EsMort = esMort;
+    }
+
     public void PosiconararPez(double x, double y){
         imagen.setLocation(x,y);
     }
@@ -66,6 +73,7 @@ public class Pez {
     public GRectangle getPosicion(){
         return imagen.getBounds();
     }
+
     public void Mover(){
         if(direccion==1){
             imagen.move(velocidad,0);

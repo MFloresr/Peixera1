@@ -25,7 +25,8 @@ public class Peces {
                     direccion=-2;
                 }
                 pez.setDireccion(direccion);
-                pez.setVelocidad(rand.nextInt(5)+1);
+                pez.setVelocidad(rand.nextInt(10)+1);
+                pez.setEsMort(false);
                 pez.setImagen(imagen);
                 imagen.setSize(80,60);
                 peces.add(pez);
@@ -40,7 +41,8 @@ public class Peces {
                     direccion=-2;
                 }
                 pez.setDireccion(direccion);
-                pez.setVelocidad(rand.nextInt(5)+1);
+                pez.setVelocidad(rand.nextInt(10)+1);
+                pez.setEsMort(false);
                 pez.setImagen(imagen);
                 imagen.setSize(80,60);
                 peces.add(pez);
@@ -53,25 +55,4 @@ public class Peces {
         return peces;
     }
 
-
-    /*public void MoverPeces (int x,int y){
-        for(Pez pez:peces){ //vigilar
-            pez.getImagen().move(x,y);
-        }
-    }*/
-
-    public void MoverPeces(){
-        for(Pez pez:peces){
-            if(pez.getDireccion()==1){
-                pez.getImagen().move(pez.getVelocidad(),0);
-            }if(pez.getDireccion()==-1){
-                pez.getImagen().move(-1*pez.getVelocidad(),0);
-            }if(pez.getDireccion()==2){
-                pez.getImagen().move(0,pez.getVelocidad());
-            }if(pez.getDireccion()==-2){
-                pez.getImagen().move(0,-1*pez.getVelocidad());
-            }
-        }
-
-    }
 }
