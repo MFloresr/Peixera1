@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public class Juego {
-    private Peces peces;
+    private Pecera peces;
     private ArrayList<Pez> Crias =new ArrayList<Pez>();
 
     public Juego(){
-        peces = new Peces();
+        peces = new Pecera();
     }
 
     public List<Pez> getPeces() {
@@ -48,44 +48,22 @@ public class Juego {
                     pez1.setEsMort(true);
                     pez2.setEsMort(true);
                 }if(pez1.getSexe()=="Macho" && pez2.getSexe()=="Hembra" || pez1.getSexe()=="Hembra" && pez2.getSexe()=="Macho" ){
-
-                    Pez pezhijo=new Pez();
-
-                    int sexe= rand.nextInt(2)+1;
-                    if (sexe==1){
-                        imagen = new GImage("imagenes/pezH.png");
-                        pezhijo.setSexe("Hembra");
-                        int direccion=rand.nextInt(4)+1;
-                        if(direccion==3){
-                            direccion=-1;
-                        }if(direccion==4){
-                            direccion=-2;
-                        }
-                        pezhijo.setDireccion(direccion);
-                        pezhijo.setVelocidad(rand.nextInt(10)+1);
-                        pezhijo.setEsMort(false);
-                        pezhijo.setImagen(imagen);
-                        imagen.setSize(80,60);
-                        Crias.add(pezhijo);
-                    }if(sexe==2){
-                        imagen = new GImage("imagenes/pezM.png");
-                        pezhijo.setSexe("Macho");
-                        int direccion=rand.nextInt(4)+1;
-                        if(direccion==3){
-                            direccion=-1;
-                        }if(direccion==4){
-                            direccion=-2;
-                        }
-                        pezhijo.setDireccion(direccion);
-                        pezhijo.setVelocidad(rand.nextInt(10)+1);
-                        pezhijo.setEsMort(false);
-                        pezhijo.setImagen(imagen);
-                        imagen.setSize(80,60);
-                        Crias.add(pezhijo);
+                    pez1.setSeReproduce(true);
+                    pez2.setSeReproduce(true);
+                    if(pez1.isSeReproduce()==true && pez2.isSeReproduce()==true){
+                        Pez pez3= new Pez();
+                        pez3.setImagen(pez1.getImagen());
+                        pez3.setSexe(pez1.getSexe());
+                        pez3.setSeReproduce(false);
+                        pez3.setDireccion();
+                        pez3.setEsMort(false);
+                        pez3.setVelocidad();
+                        Crias.add(pez3);
                     }
                 }
 
             }
+            for(){}
         }
 
     }

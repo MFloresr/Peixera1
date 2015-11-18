@@ -12,10 +12,11 @@ public class Pez {
     private int velocidad;
     private int direccion;
     private boolean EsMort;
+    private boolean SeReproduce;
+    int controlachoque;
     private Random rand=new Random();
 
-    public Pez(String sexe,GImage imagen,int direcion){
-        this.sexe=sexe;
+    public Pez(GImage imagen,int direcion){
         this.imagen = imagen;
         velocidad = rand.nextInt(20)+2;
         this.direccion = direcion;
@@ -38,8 +39,9 @@ public class Pez {
         return velocidad;
     }
 
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
+    public int setVelocidad() {
+        velocidad=rand.nextInt(10)+1;
+        return velocidad;
     }
 
     public String getSexe() {
@@ -54,8 +56,25 @@ public class Pez {
         return direccion;
     }
 
-    public void setDireccion(int direccion) {
-        this.direccion = direccion;
+    public int setDireccion() {
+        direccion = rand.nextInt(4)+1;
+        if(direccion==3){
+            direccion=-1;
+        }if (direccion==4){
+            direccion=-2;
+        }
+        return direccion;
+    }
+
+    public boolean isSeReproduce() {
+        return SeReproduce;
+    }
+
+    public void setSeReproduce(boolean seReproduce) {
+        SeReproduce = seReproduce;
+        if(seReproduce==true){
+            controlachoque =(int)imagen.getBounds().getWidth();
+        }
     }
 
     public boolean getEsMort() {
