@@ -12,28 +12,34 @@ public class Main extends GraphicsProgram {
         setSize(1300,600);
         setBackground(Color.cyan);
 
-        Juego juego =new Juego();
+        Pecera pecera =new Pecera();
+        List<Pez> peces = pecera.getPeces();
 
-        List<Pez> peces = juego.getPeces();
+
         for(Pez pez:peces){
             add(pez.getImagen());
         }
 
-        juego.posicion_inicial();
+        pecera.posicion_inicial();
 
 
-        while(juego.getPeces().size()!=0){
-            for(Iterator<Pez> it= juego.getPeces().iterator();it.hasNext();){
+        while(pecera.getPeces().size()!=0){
+            pecera.MoverPeces();
+
+            for(Iterator<Pez> it= pecera.getPeces().iterator();it.hasNext();){
                 Pez pez1= it.next();
                 if(!pez1.getEsMort()){
-                    juego.choque(pez1);
+                    pecera.choque(pez1);
                 }else{
                     it.remove();
                     remove(pez1.getImagen());
                 }
 
             }
-            juego.MoverPeces();
+            for(Pez pez:pecera.getCrias()){
+                add(pez.getImagen());
+            }
+
             pause(50);
         }
 
