@@ -22,10 +22,8 @@ public class Main extends GraphicsProgram {
 
         pecera.posicion_inicial();
 
-
         while(pecera.getPeces().size()!=0){
             pecera.MoverPeces();
-
             for(Iterator<Pez> it= pecera.getPeces().iterator();it.hasNext();){
                 Pez pez1= it.next();
                 if(!pez1.getEsMort()){
@@ -36,9 +34,16 @@ public class Main extends GraphicsProgram {
                 }
 
             }
+            //add crias
+            for(Pez pezBb:pecera.getCrias()){
+                peces.add(pezBb);
+            }
+
             for(Pez pez:pecera.getCrias()){
                 add(pez.getImagen());
             }
+
+            pecera.getCrias().clear();
 
             pause(50);
         }
