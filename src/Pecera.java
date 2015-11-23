@@ -7,7 +7,7 @@ public class Pecera {
     private ArrayList<Pez> peces=new ArrayList<>();
     private ArrayList<Pez> Crias =new ArrayList<Pez>();
     private ArrayList<Pez> Muertos =new ArrayList<Pez>();
-    private static int total=10;
+    private static int total=50;
     private GImage imagen;
     //private Random rand=new Random();
 
