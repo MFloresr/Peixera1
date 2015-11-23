@@ -14,16 +14,20 @@ public class Main extends GraphicsProgram {
 
         Pecera pecera =new Pecera();
         List<Pez> peces = pecera.getPeces();
-
+        List<Tiburon>tiburones =pecera.getTiburones();
 
         for(Pez pez:peces){
             add(pez.getImagen());
         }
 
+        for(Tiburon tibu:tiburones){
+            add(tibu.getImagen());
+        }
+
         pecera.posicion_inicial();
 
         while(pecera.getPeces().size()!=0){
-            pecera.MoverPeces();
+            pecera.Mover();
             for(Iterator<Pez> it= pecera.getPeces().iterator();it.hasNext();){
                 Pez pez1= it.next();
                 if(!pez1.getEsMort()){
