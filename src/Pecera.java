@@ -43,7 +43,6 @@ public class Pecera {
                 }if(quecoliciona.getClass()==Pez.class){
                     quecoliciona.setEsMort(true);
                 }
-
             }
 
         }else{
