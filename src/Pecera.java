@@ -6,10 +6,9 @@ public class Pecera {
 
     private ArrayList<Animal> AnimalesMarinos=new ArrayList<>();
     private ArrayList<Animal> Crias =new ArrayList<Animal>();
-    private static int totalpeces=5;
-    private static int totaltiburones=5;
+    private static int totalpeces=50;
+    private static int totaltiburones=6;
     private GImage imagen;
-    //private Random rand=new Random();
 
     public Pecera(){
         crearPeces();
@@ -39,27 +38,45 @@ public class Pecera {
                     quecoliciona.setEsMort(true);
                 }
             }if(PezContraTiburon(ani1, quecoliciona)==true || TiburonContraPez(ani1, quecoliciona)==true){
-                ani1.setEsMort(true);
-                quecoliciona.setEsMort(true);
+                if(ani1.getClass()==Pez.class){
+                    ani1.setEsMort(true);
+                }if(quecoliciona.getClass()==Pez.class){
+                    quecoliciona.setEsMort(true);
+                }
+
             }
 
         }else{
-                if(ani1.isEsteril()==false){
-                    Pez pez3 = new Pez();
-                    GImage img=new GImage(ani1.getImagen().getImage());
-                    img.setSize(20,20);
-                    pez3.setImagen(img);
-                    pez3.setSexe(ani1.getSexe());
-                    pez3.setEsteril(false);
-                    pez3.setDireccion();
-                    pez3.setEsMort(false);
-                    pez3.setVelocidad();
-                    PosicionaAnimal(pez3);
-                    Crias.add(pez3);
-                    ani1.setEsteril(true);
-                    pez3.setEsteril(true);
-                }
+            if(ani1.isEsteril()==false && ani1.getClass()==Pez.class){
+                Pez pez3 = new Pez();
+                GImage img=new GImage(ani1.getImagen().getImage());
+                img.setSize(20,20);
+                pez3.setImagen(img);
+                pez3.setSexe(ani1.getSexe());
+                pez3.setEsteril(false);
+                pez3.setDireccion();
+                pez3.setEsMort(false);
+                pez3.setVelocidad();
+                PosicionaAnimal(pez3);
+                Crias.add(pez3);
+                ani1.setEsteril(true);
+                pez3.setEsteril(true);
+            }if(ani1.isEsteril()==false && ani1.getClass()==Tiburon.class){
+                Tiburon tibuBb = new Tiburon();
+                GImage img=new GImage(ani1.getImagen().getImage());
+                img.setSize(30,30);
+                tibuBb.setImagen(img);
+                tibuBb.setSexe(ani1.getSexe());
+                tibuBb.setEsteril(false);
+                tibuBb.setDireccion();
+                tibuBb.setEsMort(false);
+                tibuBb.setVelocidad();
+                PosicionaAnimal(tibuBb);
+                Crias.add(tibuBb);
+                ani1.setEsteril(true);
+                tibuBb.setEsteril(true);
             }
+        }
     }
     public ArrayList<Animal> getAnimalesMarinos() {
         return AnimalesMarinos;
@@ -127,7 +144,6 @@ public class Pecera {
         while(cantidad<totaltiburones){
             Tiburon tibu=new Tiburon();
             if(cantidad%2==0){
-                //Nuevopez("Hembra",false);
                 imagen = new GImage("imagenes/tibuH.png");
                 tibu.setSexe("Hembra");
                 tibu.setDireccion();
@@ -182,30 +198,3 @@ public class Pecera {
         return false;
     }
 }
-
-
-/*if(quecoliciona!=null){
-                if (diferentesexo(ani1, quecoliciona)){
-                    ani1.setEsteril(false);
-                    quecoliciona.setEsteril(true);
-                }if(SonDelMismoSexo(ani1, quecoliciona)==true) {
-                    ani1.setEsMort(true);
-                    quecoliciona.setEsMort(true);
-                }
-            }else{
-                if(ani1.isEsteril()==false){
-                    Pez pez3 = new Pez();
-                    GImage img=new GImage(ani1.getImagen().getImage());
-                    img.setSize(20,20);
-                    pez3.setImagen(img);
-                    pez3.setSexe(ani1.getSexe());
-                    pez3.setEsteril(false);
-                    pez3.setDireccion();
-                    pez3.setEsMort(false);
-                    pez3.setVelocidad();
-                    PosicionaAnimal(pez3);
-                    Crias.add(pez3);
-                    ani1.setEsteril(true);
-                    pez3.setEsteril(true);
-                }
-            }*/
