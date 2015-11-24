@@ -13,23 +13,18 @@ public class Main extends GraphicsProgram {
         setBackground(Color.cyan);
 
         Pecera pecera =new Pecera();
-        List<Pez> peces = pecera.getPeces();
-        List<Tiburon>tiburones =pecera.getTiburones();
+        List<Animal> animalesMarinos = pecera.getAnimalesMarinos();
 
-        for(Pez pez:peces){
-            add(pez.getImagen());
-        }
-
-        for(Tiburon tibu:tiburones){
-            add(tibu.getImagen());
+        for(Animal animal:animalesMarinos){
+            add(animal.getImagen());
         }
 
         pecera.posicion_inicial();
 
-        while(pecera.getPeces().size()!=0){
+        while(pecera.getAnimalesMarinos().size()!=0){
             pecera.Mover();
-            for(Iterator<Pez> it= pecera.getPeces().iterator();it.hasNext();){
-                Pez pez1= it.next();
+            for(Iterator<Animal> it= pecera.getAnimalesMarinos().iterator();it.hasNext();){
+                Animal pez1= it.next();
                 if(!pez1.getEsMort()){
                     pecera.choque(pez1);
                 }else{
@@ -39,12 +34,12 @@ public class Main extends GraphicsProgram {
 
             }
             //add crias
-            for(Pez pezBb:pecera.getCrias()){
-                peces.add(pezBb);
+            for(Animal animalBb:pecera.getCrias()){
+                animalesMarinos.add(animalBb);
             }
 
-            for(Pez pez:pecera.getCrias()){
-                add(pez.getImagen());
+            for(Animal animalet:pecera.getCrias()){
+                add(animalet.getImagen());
             }
 
             pecera.getCrias().clear();
