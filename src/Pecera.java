@@ -7,11 +7,13 @@ public class Pecera {
     private ArrayList<Animal> Crias =new ArrayList<Animal>();
     private static int totalpeces=50;
     private static int totaltiburones=6;
+    private static int totalpulpos=5;
     private GImage imagen;
 
     public Pecera(){
         crearPeces();
         crearTiburones();
+        crearPulpos();
     }
 
 
@@ -110,11 +112,9 @@ public class Pecera {
     }
     private void crearPeces(){
         int cantidad=0;
-
         while(cantidad<totalpeces){
             Animal pez=new Pez();
             if(cantidad%2==0){
-                //Nuevopez("Hembra",false);
                 imagen = new GImage("imagenes/pezH.png");
                 pez.setSexe("Hembra");
                 pez.setDireccion();
@@ -163,8 +163,28 @@ public class Pecera {
             cantidad++;
         }
     }
-    private void PosicionaAnimal(Animal pez){
-        pez.Posiconarar(getAleatori(1300 - pez.getImagen().getWidth(),0), getAleatori(0,600 - pez.getImagen().getHeight()));
+    private void crearPulpos(){
+        int cantidad=0;
+        while(cantidad<totalpulpos){
+            Pulpo pulpo=new Pulpo();
+            imagen = new GImage("imagenes/pulpo.png");
+            pulpo.setSexe("Hembra");
+            pulpo.setDireccion();
+            pulpo.setVelocidad();
+            pulpo.setEsMort(false);
+            pulpo.setImagen(imagen);
+            imagen.setSize(30,30);
+            AnimalesMarinos.add(pulpo);
+            cantidad++;
+        }
+    }
+    private void PosicionaAnimal(Animal animal){
+        if(animal.getClass()==Pulpo.class){
+            animal.Posiconarar(getAleatori(1300 - animal.getImagen().getWidth(),0), getAleatori(0,600 - animal.getImagen().getHeight()));
+        }else{
+            animal.Posiconarar(getAleatori(1300 - animal.getImagen().getWidth(),0), getAleatori(0,600 - animal.getImagen().getHeight()));
+        }
+
     }
     private void MoverAnimames(){
         for(Animal animal:getAnimalesMarinos()){
