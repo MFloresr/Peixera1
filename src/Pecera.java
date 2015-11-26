@@ -1,5 +1,6 @@
 import acm.graphics.GImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Pecera {
 
@@ -7,7 +8,7 @@ public class Pecera {
     private ArrayList<Animal> Crias =new ArrayList<Animal>();
     private static int totalpeces=50;
     private static int totaltiburones=6;
-    private static int totalpulpos=5;
+    private static int totalpulpos=25;
     private GImage imagen;
 
     public Pecera(){
@@ -38,7 +39,7 @@ public class Pecera {
                     ani1.setEsMort(true);
                     quecoliciona.setEsMort(true);
                 }
-            }if(PezContraTiburon(ani1, quecoliciona)==true || TiburonContraPez(ani1, quecoliciona)==true){
+            }if(PezContraTiburon(ani1, quecoliciona)==true || TiburonContraPez(ani1, quecoliciona)==true || TiburonOPezTocaPulpo(ani1, quecoliciona)== true){
                 if(ani1.getClass()==Pez.class){
                     ani1.setEsMort(true);
                 }if(quecoliciona.getClass()==Pez.class){
@@ -167,7 +168,7 @@ public class Pecera {
         int cantidad=0;
         while(cantidad<totalpulpos){
             Pulpo pulpo=new Pulpo();
-            imagen = new GImage("imagenes/pulpo.png");
+            imagen = new GImage("imagenes/pulpo.jpg");
             pulpo.setSexe("Hembra");
             pulpo.setDireccion();
             pulpo.setVelocidad();
@@ -179,12 +180,18 @@ public class Pecera {
         }
     }
     private void PosicionaAnimal(Animal animal){
-        if(animal.getClass()==Pulpo.class){
-            animal.Posiconarar(getAleatori(1300 - animal.getImagen().getWidth(),0), getAleatori(0,600 - animal.getImagen().getHeight()));
-        }else{
-            animal.Posiconarar(getAleatori(1300 - animal.getImagen().getWidth(),0), getAleatori(0,600 - animal.getImagen().getHeight()));
+        if(animal.getClass()==Pulpo.class) {
+            Random rand = new Random();
+            int aleatorio = rand.nextInt(2) + 1;
+            if (aleatorio == 1) {
+                animal.Posiconarar(0, 0);
+            }
+            if (aleatorio == 2) {
+                animal.Posiconarar(1300-imagen.getWidth(),600-imagen.getHeight());
+                }
+        } else {
+                animal.Posiconarar(getAleatori(1300 - animal.getImagen().getWidth(), 0), getAleatori(0, 600 - animal.getImagen().getHeight()));
         }
-
     }
     private void MoverAnimames(){
         for(Animal animal:getAnimalesMarinos()){
@@ -211,6 +218,14 @@ public class Pecera {
     }
     private boolean TiburonContraPez(Animal ani1,Animal ani2){
         if(ani1.getClass()==Tiburon.class && ani2.getClass()==Pez.class){
+            return true;
+        }
+        return false;
+    }
+    private boolean TiburonOPezTocaPulpo(Animal ani1,Animal ani2){
+        if((ani1.getClass()==Tiburon.class ||ani1.getClass()==Pez.class) && ani2.getClass()==Pulpo.class){
+            return true;
+        }if(ani2.getClass()==Pulpo.class && (ani1.getClass()==Tiburon.class ||ani1.getClass()==Pez.class) ){
             return true;
         }
         return false;
