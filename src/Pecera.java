@@ -39,7 +39,14 @@ public class Pecera {
                     ani1.setEsMort(true);
                     quecoliciona.setEsMort(true);
                 }
-            }if(PezContraTiburon(ani1, quecoliciona)==true || TiburonContraPez(ani1, quecoliciona)==true || TiburonOPezTocaPulpo(ani1, quecoliciona)== true){
+            }if(esPulpo(ani1, quecoliciona)==true){
+                if(PezContraPulpo(ani1, quecoliciona)==true || TiburonContraPulpo(ani1, quecoliciona)==true ){
+                    quecoliciona.setEsMort(true);
+                }if(PulpoContraPez(ani1, quecoliciona) ||PulpoContraTiburon(ani1, quecoliciona)){
+                   ani1.setEsMort(true);
+                }
+            }
+            if(PezContraTiburon(ani1, quecoliciona)==true || TiburonContraPez(ani1, quecoliciona)==true){
                 if(ani1.getClass()==Pez.class){
                     ani1.setEsMort(true);
                 }if(quecoliciona.getClass()==Pez.class){
@@ -222,10 +229,32 @@ public class Pecera {
         }
         return false;
     }
-    private boolean TiburonOPezTocaPulpo(Animal ani1,Animal ani2){
-        if((ani1.getClass()==Tiburon.class ||ani1.getClass()==Pez.class) && ani2.getClass()==Pulpo.class){
+    private boolean esPulpo(Animal ani1,Animal ani2){
+        if(ani1.getClass()==Pulpo.class || ani2.getClass()==Pulpo.class){
             return true;
-        }if(ani2.getClass()==Pulpo.class && (ani1.getClass()==Tiburon.class ||ani1.getClass()==Pez.class) ){
+        }
+        return false;
+    }
+    private boolean PezContraPulpo(Animal ani1,Animal ani2){
+        if((ani1.getClass()==Pez.class && ani2.getClass()==Pulpo.class)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean TiburonContraPulpo(Animal ani1,Animal ani2){
+        if((ani1.getClass()==Tiburon.class && ani2.getClass()==Pulpo.class)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean PulpoContraTiburon(Animal ani1,Animal ani2){
+        if((ani1.getClass()==Pulpo.class && ani2.getClass()==Pez.class)) {
+            return true;
+        }
+        return false;
+    }
+    private boolean PulpoContraPez(Animal ani1,Animal ani2){
+        if((ani1.getClass()==Pulpo.class && ani2.getClass()==Pez.class)) {
             return true;
         }
         return false;
